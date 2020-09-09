@@ -8,6 +8,7 @@
 
 namespace lav45\activityLogger\modules\models;
 
+use lav45\activityLogger\decorators\DecoratorInterface;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -76,10 +77,10 @@ class ActivityLog extends ActiveRecord
     }
 
     /**
-     * @return array
+     * @return DecoratorInterface[]
      */
     public function getData()
     {
-        return json_decode($this->data, true);
+
     }
 }
