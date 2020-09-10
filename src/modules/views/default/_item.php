@@ -13,13 +13,13 @@ use yii\helpers\Url;
 ?>
 <h4>
     [
-    <?= Html::a(Html::encode($model->entity_name), Url::current([
+    <?= Html::a(Html::encode($model->getEntityName()), Url::current([
         'entityName' => $model->entity_name,
         'entityId' => null,
         'page' => null
     ])) ?>
     <?php if($model->entity_id): ?>
-        <?= ':' . Html::a(Html::encode($model->entity_id), Url::current([
+        <?= ' : ' . Html::a(Html::encode($model->getEntityNameById('txt_title')), Url::current([
             'entityName' => $model->entity_name,
             'entityId' => $model->entity_id,
             'page' => null
