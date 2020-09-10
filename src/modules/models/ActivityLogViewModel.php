@@ -126,4 +126,25 @@ class ActivityLogViewModel extends ActivityLog
         $formats = $this->getEntityAttributeFormats();
         return isset($formats[$attribute]) ? $formats[$attribute] : null;
     }
+    
+    public function getEntityName()
+    {
+        $id = $this->entity_name;
+        if (isset($this->entityMap[$id]) === false) {
+            return $id;
+        }
+        return $this->entityMap[$id]['name'];
+    }
+    
+    public function getEntityNameById($attribute)
+    {
+        $id = $this->entity_name;
+        if (isset($this->entityMap[$id]) === false) {
+            return $id;
+        }
+        $class = $this->entityMap[$id]['class'];
+        $model = $class::find()->select($attribute)->where(['=', 'id', $this->entity_id])->one();
+        return $model->$attribute;
+    }
+    
 }
